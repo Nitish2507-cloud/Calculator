@@ -1,0 +1,697 @@
+/* =====================================================
+   SMART CALCULATOR PRO X
+===================================================== */
+
+:root{
+
+    --bg:#070b12;
+    --panel:#111827;
+    --panel2:#1f2937;
+
+    --text:#ffffff;
+
+    --accent:#00ff88;
+
+    --accent-dark:#00cc6a;
+
+    --border:
+    rgba(255,255,255,.08);
+
+    --shadow:
+    0 0 25px rgba(0,255,136,.15);
+}
+
+/* Cyber Theme */
+
+body.cyber{
+
+    --bg:#020202;
+
+    --panel:#0b0b0b;
+
+    --panel2:#111111;
+
+    --accent:#00ff88;
+
+    --accent-dark:#00cc6a;
+}
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:
+    "Segoe UI",
+    sans-serif;
+}
+
+body{
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    transition:.4s;
+}
+
+/* =====================================================
+   ANIMATED GRID BACKGROUND
+===================================================== */
+
+.grid-bg{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-1;
+
+    background:
+
+    linear-gradient(
+    rgba(255,255,255,.03) 1px,
+    transparent 1px),
+
+    linear-gradient(
+    90deg,
+    rgba(255,255,255,.03) 1px,
+    transparent 1px);
+
+    background-size:
+    40px 40px;
+
+    animation:
+    moveGrid 12s linear infinite;
+}
+
+@keyframes moveGrid{
+
+    from{
+
+        transform:
+        translateY(0);
+    }
+
+    to{
+
+        transform:
+        translateY(40px);
+    }
+}
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.container{
+
+    width:95%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:40px;
+
+    padding:40px 0;
+}
+
+/* =====================================================
+   CALCULATOR PANEL
+===================================================== */
+
+.calculator{
+
+    width:450px;
+
+    background:var(--panel);
+
+    border:
+    1px solid var(--border);
+
+    border-radius:30px;
+
+    padding:30px;
+
+    box-shadow:
+    var(--shadow);
+
+    backdrop-filter:
+    blur(10px);
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+
+    display:flex;
+
+    justify-content:
+    space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:1.1rem;
+
+    font-weight:700;
+}
+
+.logo i{
+
+    color:var(--accent);
+
+    font-size:1.4rem;
+}
+
+#themeToggle{
+
+    width:50px;
+    height:50px;
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:50%;
+
+    color:#000;
+
+    background:
+    var(--accent);
+
+    transition:.3s;
+}
+
+#themeToggle:hover{
+
+    transform:
+    rotate(180deg);
+}
+/* =====================================================
+   DISPLAY
+===================================================== */
+
+.display-container{
+
+    background:var(--panel2);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+    border:
+    1px solid var(--border);
+}
+
+#display{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    color:white;
+
+    font-size:2rem;
+
+    text-align:right;
+}
+
+#liveResult{
+
+    margin-top:15px;
+
+    text-align:right;
+
+    font-size:1.2rem;
+
+    color:var(--accent);
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.buttons{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+}
+
+.buttons button{
+
+    height:70px;
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:18px;
+
+    font-size:1.3rem;
+
+    color:white;
+
+    background:var(--panel2);
+
+    transition:.25s;
+}
+
+.buttons button:hover{
+
+    transform:
+    translateY(-3px);
+
+    box-shadow:
+    0 0 15px rgba(0,255,136,.2);
+}
+
+.operator{
+
+    background:
+    var(--accent) !important;
+
+    color:#000 !important;
+
+    font-weight:700;
+}
+
+.equal{
+
+    background:
+    linear-gradient(
+    135deg,
+    #00ff88,
+    #00cc6a
+    ) !important;
+
+    color:black !important;
+}
+
+.special{
+
+    background:
+    #252f3f !important;
+}
+
+.zero{
+
+    grid-column:
+    span 2;
+}
+/* =====================================================
+   ACTION BAR
+===================================================== */
+
+.action-bar{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:25px;
+}
+
+.action-bar button{
+
+    flex:1;
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    color:white;
+
+    background:var(--panel2);
+
+    transition:.3s;
+}
+
+.action-bar button:hover{
+
+    background:
+    var(--accent);
+
+    color:black;
+}
+
+/* =====================================================
+   HISTORY PANEL
+===================================================== */
+
+.history-panel{
+
+    width:350px;
+
+    min-height:650px;
+
+    background:var(--panel);
+
+    border-radius:30px;
+
+    padding:25px;
+
+    border:
+    1px solid var(--border);
+
+    box-shadow:
+    var(--shadow);
+}
+
+.history-panel h2{
+
+    margin-bottom:25px;
+
+    color:var(--accent);
+}
+
+#historyList{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.history-item{
+
+    background:
+    var(--panel2);
+
+    padding:15px;
+
+    border-radius:15px;
+
+    border-left:
+    4px solid var(--accent);
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:1000px){
+
+    .container{
+
+        flex-direction:column;
+    }
+
+    .calculator{
+
+        width:100%;
+    }
+
+    .history-panel{
+
+        width:100%;
+
+        min-height:auto;
+    }
+}
+
+@media(max-width:500px){
+
+    .buttons button{
+
+        height:60px;
+
+        font-size:1.1rem;
+    }
+
+    #display{
+
+        font-size:1.5rem;
+    }
+}
+/* =====================================================
+   LOADER
+===================================================== */
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#050505;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999999;
+
+    transition:.5s;
+}
+
+.loader-content{
+
+    text-align:center;
+}
+
+.loader-content h2{
+
+    margin-top:20px;
+
+    color:var(--accent);
+
+    letter-spacing:2px;
+
+    font-size:1.3rem;
+}
+
+.loader-circle{
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    border:5px solid #222;
+
+    border-top:5px solid var(--accent);
+
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+    }
+}
+
+/* =====================================================
+   HEADER BUTTONS
+===================================================== */
+
+.header-buttons{
+
+    display:flex;
+
+    gap:10px;
+}
+
+#scientificBtn,
+#themeToggle{
+
+    width:50px;
+    height:50px;
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    color:#000;
+
+    font-size:1rem;
+
+    transition:.3s;
+}
+
+#scientificBtn:hover,
+#themeToggle:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 20px rgba(0,255,136,.4);
+}
+
+/* =====================================================
+   SCIENTIFIC PANEL
+===================================================== */
+
+#scientificPanel{
+
+    margin-top:20px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    gap:10px;
+}
+
+#scientificPanel button{
+
+    height:55px;
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:12px;
+
+    color:var(--accent);
+
+    background:#161616;
+
+    transition:.3s;
+}
+
+#scientificPanel button:hover{
+
+    background:var(--accent);
+
+    color:black;
+
+    transform:
+    translateY(-2px);
+}
+
+/* =====================================================
+   HISTORY SCROLL
+===================================================== */
+
+#historyList{
+
+    max-height:500px;
+
+    overflow-y:auto;
+
+    padding-right:5px;
+}
+
+#historyList::-webkit-scrollbar{
+
+    width:8px;
+}
+
+#historyList::-webkit-scrollbar-thumb{
+
+    background:var(--accent);
+
+    border-radius:20px;
+}
+
+/* =====================================================
+   HISTORY ITEM HOVER
+===================================================== */
+
+.history-item{
+
+    transition:.3s;
+}
+
+.history-item:hover{
+
+    transform:
+    translateX(5px);
+
+    box-shadow:
+    0 0 15px rgba(0,255,136,.15);
+}
+
+/* =====================================================
+   PREMIUM GLOW EFFECT
+===================================================== */
+
+.calculator:hover{
+
+    box-shadow:
+    0 0 35px rgba(0,255,136,.25);
+}
+
+/* =====================================================
+   EXPORT BUTTON
+===================================================== */
+
+#exportHistory{
+
+    background:#1d2736;
+}
+
+/* =====================================================
+   MOBILE IMPROVEMENTS
+===================================================== */
+
+@media(max-width:768px){
+
+    .action-bar{
+
+        flex-direction:column;
+    }
+
+    #scientificPanel{
+
+        grid-template-columns:
+        repeat(3,1fr);
+    }
+
+}
